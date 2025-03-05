@@ -57,6 +57,10 @@ export const Strings = {
   tokenSent: 'Token was sent',
   youNeedAdminRole: 'You need to be an admin to use this functionality!',
   entityNotFound: 'Entity not found',
+
+  passwordLengthValidation: 'Password must be at least 7 characters long!',
+  passwordContentValidation:
+    'Password must contain at least one letter and one number',
 };
 
 export const Consts = {

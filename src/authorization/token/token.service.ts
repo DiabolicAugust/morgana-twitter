@@ -6,9 +6,13 @@ import { PayloadDto } from '../dto/payload.dto';
 export class TokenService {
   constructor(private readonly jwtService: JwtService) {}
 
-  async generateToken(payloadData: PayloadDto) {
+  async generateToken(id: string, email: string) {
+    const payload: PayloadDto = {
+      id: id,
+      email: email,
+    };
     return {
-      token: this.jwtService.sign(payloadData),
+      token: this.jwtService.sign(payload),
     };
   }
 }

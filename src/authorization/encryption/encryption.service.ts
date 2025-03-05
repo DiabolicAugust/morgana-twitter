@@ -23,6 +23,9 @@ export class EncryptionService {
     newData: string,
     hashedData: string,
   ): Promise<boolean> {
-    return bcrypt.compare(newData, hashedData);
+    return bcrypt.compare(
+      newData + this.configService.get<string>('PASSWORD_PEPPER'),
+      hashedData,
+    );
   }
 }

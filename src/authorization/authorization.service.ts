@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { User } from '@prisma/client';
-import { RegistrateUserDto } from './dto/create-user.dto';
+import { RegistrateUserDto } from './dto/registrate-user.dto';
 import { EncryptionService } from './encryption/encryption.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { Strings } from '../data/strings';
@@ -30,9 +30,11 @@ export class AuthorizationService {
         isVerifiedEmail: {
           create: {},
         },
+        profile: { create: { name: registrateUserDto.name } },
       },
       include: {
         isVerifiedEmail: true,
+        profile: true,
       },
     });
 
@@ -53,15 +55,11 @@ export class AuthorizationService {
         user.password,
       );
 
-    if (passwordVerification) {
+    if (!passwordVerification) {
       throw new UnauthorizedException(Strings.wrongPassword);
     }
 
-    const payload: PayloadDto = {
-      id: user.id,
-      email: user.email,
-    };
-    const token = await this.tokenService.generateToken(payload);
+    const token = await this.tokenService.generateToken(user.id, user.email);
 
     return token;
   }

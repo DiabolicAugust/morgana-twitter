@@ -10,4 +10,5 @@ export const enum Fields {
 
 export const enum Entities {
   USER = 'user',
+  PROFILE = 'profile',
 }

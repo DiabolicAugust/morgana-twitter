@@ -5,10 +5,14 @@ import {
   Matches,
   MinLength,
 } from 'class-validator';
-import { Fields } from '../../data/enums/strings.enum';
 import { Strings } from '../../data/strings';
+import { Fields } from '../../data/enums/strings.enum';
 
-export class LoginUserDto {
+export class RegistrateUserDto {
+  @IsNotEmpty({ message: Strings.fieldCantBeEmpty(Fields.USERNAME) })
+  @IsString({ message: Strings.fieldMustBeString(Fields.USERNAME) })
+  name: string;
+
   @IsEmail()
   email: string;
 

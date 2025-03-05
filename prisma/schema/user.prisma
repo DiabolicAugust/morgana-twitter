@@ -6,6 +6,7 @@ model User{
   isBanned Boolean @default(false) @map("is_banned")
 
   isVerifiedEmail EmailVerification?
+  profile Profile?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 
