@@ -44,6 +44,7 @@ export const Strings = {
 
   entityApproved: (entity: Entities) => `${entity} was approved'`,
 
+  noUserFound: 'No user matches provided email or password',
   emailAlreadyVerified: 'This email is already verified!',
   emailVerifySuccess: 'Your email was successfully verified!',
   notAllowedApproveFriendship: 'You are not allowed to approve this friendship',
@@ -56,6 +57,10 @@ export const Strings = {
   tokenSent: 'Token was sent',
   youNeedAdminRole: 'You need to be an admin to use this functionality!',
   entityNotFound: 'Entity not found',
+
+  passwordLengthValidation: 'Password must be at least 7 characters long!',
+  passwordContentValidation:
+    'Password must contain at least one letter and one number',
 };
 
 export const Consts = {
