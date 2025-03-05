@@ -44,6 +44,7 @@ export const Strings = {
 
   entityApproved: (entity: Entities) => `${entity} was approved'`,
 
+  noUserFound: 'No user matches provided email or password',
   emailAlreadyVerified: 'This email is already verified!',
   emailVerifySuccess: 'Your email was successfully verified!',
   notAllowedApproveFriendship: 'You are not allowed to approve this friendship',
