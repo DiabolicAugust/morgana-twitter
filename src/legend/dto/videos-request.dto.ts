@@ -1,0 +1,14 @@
+import { Transform } from 'class-transformer';
+import { IsInt, Min } from 'class-validator';
+
+export class VideosRequestDto {
+  @IsInt()
+  @Min(1)
+  @Transform(({ value }) => parseInt(value, 10))
+  page: number;
+
+  @IsInt()
+  @Min(1)
+  @Transform(({ value }) => parseInt(value, 10))
+  amount: number;
+}
