@@ -6,9 +6,11 @@ export const enum Fields {
   ID = 'id',
   USER = 'user',
   TEXT = 'text',
+  VIDEO = 'video',
 }
 
 export const enum Entities {
   USER = 'user',
   PROFILE = 'profile',
+  LEGEND = 'legend',
 }

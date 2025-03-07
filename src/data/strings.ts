@@ -61,6 +61,8 @@ export const Strings = {
   passwordLengthValidation: 'Password must be at least 7 characters long!',
   passwordContentValidation:
     'Password must contain at least one letter and one number',
+
+  notAllowedToDoIt: 'You are not allowed to do it',
 };
 
 export const Consts = {

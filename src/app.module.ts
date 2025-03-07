@@ -8,6 +8,7 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { PrismaService } from './prisma.service';
 import { ConfigModule } from '@nestjs/config';
 import { ProfileModule } from './profile/profile.module';
+import { LegendModule } from './legend/legend.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ProfileModule } from './profile/profile.module';
     AuthorizationModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ProfileModule,
+    LegendModule,
   ],
   controllers: [AppController],
   providers: [EncryptionService, AppService, PrismaService],
