@@ -13,12 +13,14 @@ import { Strings } from '../data/strings';
 import { Entities, Fields } from '../data/enums/strings.enum';
 import { VideosRequestDto } from './dto/videos-request.dto';
 import { Legend } from '@prisma/client';
+import { HelperService } from '../services/helper.service';
 
 @Injectable()
 export class LegendService {
   constructor(
     private readonly s3Service: S3Service,
     private readonly prisma: PrismaService,
+    private readonly helperService: HelperService,
   ) {}
 
   async create(
@@ -32,7 +34,10 @@ export class LegendService {
         HttpStatus.BAD_REQUEST,
       );
 
-    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      include: { profile: true },
+    });
 
     if (!user)
       throw new UnauthorizedException(
@@ -47,6 +52,7 @@ export class LegendService {
         description: createLegendDto.description,
         userId: user.id,
         videoUrl: videoUrl,
+        profileId: user.profile.id,
       },
     });
 
@@ -58,10 +64,13 @@ export class LegendService {
       skip: (videosRequestDto.page - 1) * videosRequestDto.amount,
       take: videosRequestDto.amount,
       orderBy: { createdAt: 'desc' },
+      include: { profile: true },
     });
 
     return {
       legends: legends,
+      page: videosRequestDto.page,
+      amount: videosRequestDto.amount,
     };
   }
 
@@ -89,18 +98,16 @@ export class LegendService {
         Strings.noEntityWithField(Entities.LEGEND, Fields.ID, id),
       );
 
-    this.checkPermissions(legend.userId, requestorId);
+    this.helperService.checkPermissions(legend.userId, requestorId);
 
     await this.prisma.legend.delete({
       where: { id: legend.id },
     });
 
-    return { message: Strings.entityDeleted(Entities.LEGEND) };
-  }
+    await this.s3Service.deleteFile(legend.videoUrl);
 
-  private checkPermissions(ownerId: string, requestorId: string): void {
-    if (ownerId !== requestorId) {
-      throw new ForbiddenException(Strings.notAllowedToDoIt);
-    }
+    //Todo: Add video removement from aws s3
+
+    return { message: Strings.entityDeleted(Entities.LEGEND) };
   }
 }

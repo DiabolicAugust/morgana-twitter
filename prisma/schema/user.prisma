@@ -8,6 +8,7 @@ model User{
   isVerifiedEmail EmailVerification?
   profile Profile?
   legends Legend[]
+  chronicles Chronicle[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 

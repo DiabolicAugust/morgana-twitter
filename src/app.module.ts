@@ -9,6 +9,8 @@ import { PrismaService } from './prisma.service';
 import { ConfigModule } from '@nestjs/config';
 import { ProfileModule } from './profile/profile.module';
 import { LegendModule } from './legend/legend.module';
+import { ChronicleModule } from './chronicle/chronicle.module';
+import { HelperService } from './services/helper.service';
 
 @Module({
   imports: [
@@ -17,9 +19,10 @@ import { LegendModule } from './legend/legend.module';
     ConfigModule.forRoot({ isGlobal: true }),
     ProfileModule,
     LegendModule,
+    ChronicleModule,
   ],
   controllers: [AppController],
-  providers: [EncryptionService, AppService, PrismaService],
-  exports: [EncryptionService, PrismaService],
+  providers: [EncryptionService, AppService, PrismaService, HelperService],
+  exports: [EncryptionService, PrismaService, HelperService],
 })
 export class AppModule {}

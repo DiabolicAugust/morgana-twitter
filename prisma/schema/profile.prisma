@@ -10,6 +10,8 @@ model Profile{
 
     userId String @unique @map("user_id")
 
+    legends Legend[]
+
     bio String @default("")
 
     avatar String @default("")
