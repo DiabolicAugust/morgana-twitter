@@ -26,7 +26,7 @@ export class AuthorizationService {
       data: {
         username: registrateUserDto.name,
         password: hashedPassword,
-        email: registrateUserDto.email,
+        email: registrateUserDto.email.toLowerCase(),
         isVerifiedEmail: {
           create: {},
         },
@@ -44,7 +44,7 @@ export class AuthorizationService {
   async login(loginUserDto: LoginUserDto) {
     const user = await this.prisma.user.findUnique({
       where: {
-        email: loginUserDto.email,
+        email: loginUserDto.email.toLowerCase(),
       },
     });
     if (!user) throw new UnauthorizedException(Strings.noUserFound);

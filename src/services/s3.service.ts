@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import {
   S3Client,
   PutObjectCommand,
-  ObjectCannedACL,
+  DeleteObjectCommand,
 } from '@aws-sdk/client-s3';
 import { ConfigService } from '@nestjs/config';
 import { v4 as uuidv4 } from 'uuid';
+import { Strings } from '../data/strings';
 
 @Injectable()
 export class S3Service {
@@ -36,5 +37,19 @@ export class S3Service {
     await this.s3.send(new PutObjectCommand(uploadParams));
 
     return `https://${this.bucketName}.s3.${this.configService.get<string>('AWS_REGION')}.amazonaws.com/${fileKey}`;
+  }
+
+  async deleteFile(fileUrl: string): Promise<void> {
+    const fileKey = new URL(fileUrl).pathname.slice(1);
+    if (!fileKey) {
+      throw new Error(Strings.invalidUrl);
+    }
+
+    const command = new DeleteObjectCommand({
+      Bucket: this.bucketName,
+      Key: fileKey,
+    });
+
+    await this.s3.send(command);
   }
 }

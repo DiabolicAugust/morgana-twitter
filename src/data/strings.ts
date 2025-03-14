@@ -57,12 +57,16 @@ export const Strings = {
   tokenSent: 'Token was sent',
   youNeedAdminRole: 'You need to be an admin to use this functionality!',
   entityNotFound: 'Entity not found',
+  invalidUrl: 'Invalid file URL',
 
   passwordLengthValidation: 'Password must be at least 7 characters long!',
   passwordContentValidation:
     'Password must contain at least one letter and one number',
 
   notAllowedToDoIt: 'You are not allowed to do it',
+
+  tooManyMedia:
+    'You uploaded too many media files. 1 chronicle is allowed to have 3 images and 2 videos max!',
 };
 
 export const Consts = {
