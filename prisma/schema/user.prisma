@@ -9,6 +9,7 @@ model User{
   profile Profile?
   legends Legend[]
   chronicles Chronicle[]
+  legendLikes LegendLike[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 

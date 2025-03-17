@@ -67,8 +67,11 @@ export const Strings = {
 
   tooManyMedia:
     'You uploaded too many media files. 1 chronicle is allowed to have 3 images and 2 videos max!',
+
+  create: 'Create',
+  delete: 'Delete',
 };
 
-export const Consts = {
-  GET_SERVICE: 'GetService',
-};
+// export const Consts = {
+//   GET_SERVICE: 'GetService',
+// };

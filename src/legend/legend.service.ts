@@ -64,7 +64,14 @@ export class LegendService {
       skip: (videosRequestDto.page - 1) * videosRequestDto.amount,
       take: videosRequestDto.amount,
       orderBy: { createdAt: 'desc' },
-      include: { profile: true },
+      include: {
+        profile: true,
+        _count: {
+          select: {
+            likes: true,
+          },
+        },
+      },
     });
 
     return {
