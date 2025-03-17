@@ -11,6 +11,7 @@ import { ProfileModule } from './profile/profile.module';
 import { LegendModule } from './legend/legend.module';
 import { ChronicleModule } from './chronicle/chronicle.module';
 import { HelperService } from './services/helper.service';
+import { LegendLikeModule } from './legend-like/legend-like.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { HelperService } from './services/helper.service';
     ProfileModule,
     LegendModule,
     ChronicleModule,
+    LegendLikeModule,
   ],
   controllers: [AppController],
   providers: [EncryptionService, AppService, PrismaService, HelperService],

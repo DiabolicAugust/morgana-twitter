@@ -11,6 +11,8 @@ model Legend{
     profile Profile  @relation(fields: [profileId], references: [id])
     profileId String @map("profile_id")
 
+    likes LegendLike[]
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt 
 
