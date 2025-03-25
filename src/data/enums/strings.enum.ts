@@ -14,4 +14,5 @@ export const enum Entities {
   PROFILE = 'profile',
   LEGEND = 'legend',
   CHRONICLE = 'chronicle',
+  COMMENT = 'comment',
 }
