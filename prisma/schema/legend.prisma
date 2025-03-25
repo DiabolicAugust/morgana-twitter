@@ -12,6 +12,7 @@ model Legend{
     profileId String @map("profile_id")
 
     likes LegendLike[]
+    comments LegendComment[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt 

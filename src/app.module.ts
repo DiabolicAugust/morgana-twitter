@@ -12,6 +12,7 @@ import { LegendModule } from './legend/legend.module';
 import { ChronicleModule } from './chronicle/chronicle.module';
 import { HelperService } from './services/helper.service';
 import { LegendLikeModule } from './legend-like/legend-like.module';
+import { LegendCommentModule } from './legend-comment/legend-comment.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { LegendLikeModule } from './legend-like/legend-like.module';
     LegendModule,
     ChronicleModule,
     LegendLikeModule,
+    LegendCommentModule,
   ],
   controllers: [AppController],
   providers: [EncryptionService, AppService, PrismaService, HelperService],

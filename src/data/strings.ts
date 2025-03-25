@@ -70,6 +70,7 @@ export const Strings = {
 
   create: 'Create',
   delete: 'Delete',
+  comment: 'Comment',
 };
 
 // export const Consts = {
