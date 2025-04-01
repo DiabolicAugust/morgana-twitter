@@ -11,6 +11,7 @@ model User{
   chronicles Chronicle[]
   legendLikes LegendLike[]
   legendComments LegendComment[]
+  chronicleLikes ChronicleLike[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 

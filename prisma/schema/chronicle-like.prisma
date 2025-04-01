@@ -1,0 +1,19 @@
+
+
+model ChronicleLike{
+  id String @id @default(cuid())
+
+chronicle Chronicle @relation(fields: [chronicleId], references: [id])
+chronicleId String @map("chronicle_id")
+
+user User @relation(fields: [userId], references: [id])
+userId String @map("user_id")
+
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt 
+
+  @@unique([chronicleId, userId])
+
+  @@map("chronicle_like")
+}
