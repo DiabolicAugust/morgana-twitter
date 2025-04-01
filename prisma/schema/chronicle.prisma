@@ -10,6 +10,8 @@ model Chronicle{
 
     userId String  @map("user_id")
 
+
+    likes ChronicleLike[]
     images String[]
     videos String[]
 
